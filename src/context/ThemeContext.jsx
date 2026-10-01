@@ -1,0 +1,35 @@
+import React, { createContext, useState, useEffect, useContext } from 'react';
+
+const ThemeContext = createContext();
+
+export const useTheme = () => useContext(ThemeContext);
+
+export const ThemeProvider = ({ children }) => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem('voltix-theme');
+    return savedTheme ? savedTheme === 'dark' : false;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('voltix-theme', isDarkMode ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-bs-theme', isDarkMode ? 'dark' : 'light');
+    
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+      document.body.classList.remove('light-mode');
+    } else {
+      document.body.classList.add('light-mode');
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode(prev => !prev);
+  };
+
+  return (
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};

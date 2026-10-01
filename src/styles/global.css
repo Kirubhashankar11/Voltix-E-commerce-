@@ -1,0 +1,172 @@
+:root {
+  --primary: #6C5CE7;
+  --primary-dark: #5145C6;
+  --accent: #00D4FF;
+  --success: #22C55E;
+  --danger: #EF4444;
+  --warning: #F59E0B;
+}
+
+body.light-mode {
+  --bg-color: #F7F8FC;
+  --surface-color: #FFFFFF;
+  --text-color: #16181D;
+  --text-muted: #6B7280;
+  --border-color: #E5E7EB;
+  --hover-bg: #F3F4F6;
+  --card-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+body.dark-mode {
+  --bg-color: #0B0F19;
+  --surface-color: #121826;
+  --text-color: #F9FAFB;
+  --text-muted: #9CA3AF;
+  --border-color: #1F2937;
+  --hover-bg: #1E293B;
+  --card-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Typography & General Settings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+/* Custom Component Styles */
+.surface-card {
+  background-color: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text-muted-custom {
+  color: var(--text-muted) !important;
+}
+
+.theme-bg-light {
+  background-color: var(--hover-bg) !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 24px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+  background-color: var(--hover-bg);
+  color: var(--primary);
+}
+
+/* Forms */
+.form-control, .form-select {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: var(--surface-color);
+  color: var(--text-color);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.25rem rgba(108, 92, 231, 0.25);
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Utilities */
+.min-vh-100 {
+  min-height: 100vh;
+}
+.pt-nav {
+  padding-top: 80px;
+}
+
+.skeleton-box {
+  background: linear-gradient(90deg, var(--hover-bg) 25%, var(--border-color) 50%, var(--hover-bg) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
